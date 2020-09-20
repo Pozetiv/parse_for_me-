@@ -1,0 +1,2 @@
+module Bank::ReportDatumsHelper
+end

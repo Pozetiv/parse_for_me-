@@ -1,0 +1,20 @@
+table.table.is-bordered
+  thead
+    tr
+      th Банк
+      th Курс $
+      th Курс €
+      th Курс Золота
+      th
+  tbody
+    - @banks.each do |bank|
+      - report_last = bank.report_datum.first
+      - if report_last
+        tr data-bank-id=bank.id
+          td = link_to bank.name, bank_path(bank)
+          td = "#{report_last.usd['buying']} / #{report_last.usd['selling']}"
+          td = "#{report_last.eur['buying']} / #{report_last.eur['selling']}"
+          td = "#{report_last.gold['buying']} / #{report_last.gold['selling']}" if report_last.gold
+          td
+            = link_to  do_update_bank_report_datums_path(bank), remote: true do
+              i.fas.fa-sync

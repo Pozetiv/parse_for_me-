@@ -1,0 +1,10 @@
+- flash.each do |type, msg|
+  - if ['danger', 'warning'].include?(type)
+    javascript:
+      toastr.error("#{msg}")
+  - elsif type == 'alert'
+    javascript:
+      toastr.info("#{msg}")
+  - else
+    javascript:
+      toastr.success("#{msg}")

@@ -1,0 +1,17 @@
+h1.title = @bank.name
+table.table
+  thead
+    tr
+      th Время фиксации
+      th Доллар
+      th Евро
+      th Золото
+  tbody
+    - @report_datums.each do |data|
+      tr
+        td = data.created_at.strftime('%k:%M %e.%m.%Y')
+        td = "#{data.usd['buying']} / #{data.usd['selling']}"
+        td = "#{data.eur['buying']} / #{data.eur['selling']}"
+        td = "#{data.gold['buying']} / #{data.gold['selling']}" if data.gold
+  
+== pagy_bulma_nav(@pagy)
